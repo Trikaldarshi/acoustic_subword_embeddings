@@ -1,5 +1,6 @@
 """
-Compute the SSL features for a given model and store them
+Compute the Self Supervised Learning (SSL) features (HuBERT or wav2vec2) for a given model and store them
+on local disk.
 
 Author: Amit Meghanani
 
@@ -32,7 +33,6 @@ possible_models = ["HUBERT_BASE","HUBERT_LARGE","HUBERT_XLARGE","WAV2VEC2_BASE",
 #      UTILITY FUNCTIONS       #
 #------------------------------#
 
-
 def check_argv():
     """ Check the command line arguments."""
     parser = argparse.ArgumentParser(
@@ -43,7 +43,6 @@ def check_argv():
     parser.add_argument("path_to_output", type = str, help = "path to output folder where features will be stored")
     parser.add_argument("path_to_libri", type = str, help = "base path to librispeech dataset")
     parser.add_argument("layer", type = int, help = "layer you want to extract",nargs='?',default=12)
-    
 
     if len(sys.argv)==1:
         parser.print_help()
@@ -53,8 +52,6 @@ def check_argv():
 def split_string(strs):
     return strs.split(sep="/")[-2]
 
-
-
 #------------------------------#
 #      MAIN FUNCTION           #
 #------------------------------#
@@ -62,7 +59,7 @@ def split_string(strs):
 def main():
     args = check_argv()
 
-    # Check whether the specified text file exists or not
+    # Check whether the specified metadata file exists or not
     isExist = os.path.exists(args.metadata_file_path)
 
     if not isExist:
@@ -70,6 +67,7 @@ def main():
         print("provide the correct path for the text/dataframe file having list of wave files")
         sys.exit(1)
 
+    # Check whether the specified libripseech dataset path exists or not
     isExist = os.path.exists(args.path_to_libri)
 
     if not isExist:
@@ -86,13 +84,15 @@ def main():
             os.makedirs(path.join(args.path_to_output,m.split(".")[0]))
             print("The new directory for output is created!",m.split(".")[0])
 
+    # Load model
+
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(args.metadata_file_list)
     model,sr = load_model(args.model,device)
+
+    ## Extraction of SSL features ( HuBERT_BASE in this case )
+
     for f_name in args.metadata_file_list:
         data = pd.read_csv(os.path.join(args.metadata_file_path,f_name))
-        print(data.head())
-        count = 0
         for _,row in tqdm(data.iterrows()):
             file_path = path.join(args.path_to_libri,row["filename_path"].strip("./").strip("\n"))
             word_description = row["word"] + "_" + str(row["start"]) + "_" + str(row["duration"]) + "_" \
@@ -100,13 +100,10 @@ def main():
             features = SSL_features(file_path,model,sr,layer=args.layer,device=device)
             word_features = clip_features(features,row["start"],row["duration"],layer=args.layer)
             torch.save(word_features, path.join(args.path_to_output,f_name.split(".")[0],word_description+".pt"))
-            count = count+1
-            print(count)
-            # if count==100:
-            #     print("maximum count reached")
-            #     sys.exit(1)
 
-
+    
+    ## save the metadata file for the extracted features
+    
     PATH = args.path_to_output
     my_files = sorted(glob.glob(PATH + '*/**/*.pt',recursive=True))
     print("total calculated features files",len(my_files))
