@@ -1,6 +1,6 @@
 --model_name=HUBERT_BASE
 --input_dim=768
---metadata_file=/fastdata/acw21am/private/hubert_features/hubert_feature_metadata.csv
+--metadata_file=[/your paht]/hubert_features/hubert_feature_metadata.csv
 --path_to_output=./checkpoints/model_ssl/
 --root=None
 --lr=0.0001
