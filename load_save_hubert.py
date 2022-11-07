@@ -13,11 +13,9 @@ import argparse
 import os
 import sys
 from feature_extractor import load_model,SSL_features,clip_features
-import time
 import torch
 from tqdm import tqdm
 import pandas as pd
-import numpy as np
 from os import path
 import glob
 
