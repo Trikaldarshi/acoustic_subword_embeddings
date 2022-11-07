@@ -32,6 +32,10 @@ To train a MFCC based CAE-RNN model, run the following code:
 
 python cae_rnn.py @cae_rnn_mfcc.txt
 
+After training the model either with HuBERT or MFCC features, run the following code for exracting the AWEs from the trained CAE-RNN model checkpoints (following code is for HuBERT based AWEs):
+
+python cal_emb.py @cal_emb.txt
+
 #### Train Factorisation model
 
 #### Extraction of ASEs from AWEs and store them (Note: AWEs are derived using HuBERT as input features)
