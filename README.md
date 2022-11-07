@@ -1,5 +1,4 @@
-# acoustic_subword_embeddings
-Acoustic Subword Embeddings (ASE)
+# Acoustic Subword Embeddings (ASE)
 
 #### Projected Embeddings
 Acoustic Word Embedding of test set: [AWE test](https://projector.tensorflow.org/?config=https://gist.githubusercontent.com/Trikaldarshi/48f3df6c9e6081c1411a898766d43384/raw/c81c10e8bed6cfb45b06f87f16143040fae7f437/test_awe_config.json)
