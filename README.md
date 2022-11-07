@@ -21,6 +21,8 @@ To compute MFCC features, run the following command:
 
 python load_save_mfcc_dd.py ./data/ ./[add your output dir]/mfcc_features_norm/ .[add your librispeech data dir]/LibriSpeech/
 
-#### Extraction of AWEs for both MFCCs and HuBERT based CAE-RNN model
+#### Extraction of AWEs for both MFCCs and HuBERT based CAE-RNN model and store them
 
-#### Extraction of ASEs from AWEs (Note: AWEs are derived using HuBERT as input features)
+#### Train Factorisation model
+
+#### Extraction of ASEs from AWEs and store them (Note: AWEs are derived using HuBERT as input features)
