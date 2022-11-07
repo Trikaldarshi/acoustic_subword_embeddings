@@ -1,0 +1,14 @@
+--model_name=HUBERT_BASE
+--input_dim=768
+--metadata_file=/fastdata/acw21am/private/hubert_features/hubert_feature_metadata.csv
+--model_weights=./checkpoints/model_ssl/cae_hubert_final/HUBERT_BASE_128_BEST.pt
+--tokenizer=../bpe_tokenizers/libri_205.model
+--path_to_output=./embeddings_final
+--batch_size=256
+--embedding_dim=128
+--hidden_dim=256
+--distance=cosine
+--rnn_type=GRU
+--bidirectional=True
+--num_layers=4
+--dropout=0.2
