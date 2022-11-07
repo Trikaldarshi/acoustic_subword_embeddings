@@ -1,6 +1,6 @@
 --model_name=MFCC
 --input_dim=60
---metadata_file=/fastdata/acw21am/private/mfcc_features/mfcc_feature_metadata.csv
+--metadata_file=[your path]/mfcc_features/mfcc_feature_metadata.csv
 --path_to_output=./checkpoints/model_mfcc/
 --root=None
 --lr=0.0001
