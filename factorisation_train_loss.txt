@@ -1,0 +1,15 @@
+--input_dim=128
+--metadata_file=./embeddings_final
+--path_to_output=./checkpoints/model_factorisation/
+--embedding_loc=./embeddings_final
+--lr=0.001
+--batch_size=256
+--n_epochs=100
+--checkpoint_steps=10
+--step_lr=200
+--sub_embedding_dim=128
+--opt=adam
+--distance=cosine
+--model_name=fact_net3
+--norm=False
+--loss=all
