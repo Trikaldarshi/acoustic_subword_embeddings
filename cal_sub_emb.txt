@@ -1,0 +1,9 @@
+--input_dim=128
+--model_name=fact_net3
+--metadata_file=./embeddings_final
+--model_weights=./checkpoints/model_factorisation/net14/fact_net3_cpu_BEST.pt
+--path_to_output=./sub_embeddings_final
+--embedding_loc=./embeddings_final
+--batch_size=256
+--sub_embedding_dim=128
+--distance=cosine
