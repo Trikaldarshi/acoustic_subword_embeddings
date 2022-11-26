@@ -1,0 +1,10 @@
+--input_dim=128
+--metadata_file=./embeddings_final
+--model_loc=./checkpoints/model_factorisation/net4/
+--embedding_loc=./embeddings_final
+--batch_size=256
+--sub_embedding_dim=128
+--distance=cosine
+--model_name=fact_net3
+--norm=True
+--shuffle_pos=no
