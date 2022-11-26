@@ -39,6 +39,7 @@ After training the model either with HuBERT or MFCC features, run the following 
 
 python cal_emb.py @cal_emb.txt
 
+### Extraction of ASEs from AWEs and store them (Note: AWEs are derived using HuBERT as input features)
 #### Train Factorisation model
 python factorisation_train_loss.py @factorisation_train_loss.txt
 
@@ -49,6 +50,6 @@ python cal_sub_emb.py @cal_sub_emb.txt
 #### Run evluation
 After calculating subword embeddings, run the following exvaluation script to compute the average precision metrics (AP-SW and AP-RW)
 
-pyton evaluation.py @evaluation.txt
+python evaluation.py @evaluation.txt
 
-#### Extraction of ASEs from AWEs and store them (Note: AWEs are derived using HuBERT as input features)
+
